@@ -31,4 +31,21 @@ final class StringBasicsTest extends TestCase
             ['A', false],
         ];
     }
+
+    /**
+     * @dataProvider providerTestConvertUrlToHttps
+     */
+    public function testConvertUrlToHttps(string $input, string $expected): void {
+        $value = StringBasics::ConvertUrlToHttps($input);
+
+        $this->assertSame($expected, $value);
+    }
+
+    public function providerTestConvertUrlToHttps(): array {
+        return [
+            ['//abc.de', 'https://abc.de'],
+            ['http://abc.de', 'https://abc.de'],
+            ['https://abc.de', 'https://abc.de'],
+        ];
+    }
 }
