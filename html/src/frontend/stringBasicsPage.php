@@ -23,18 +23,18 @@ writeStringEnterAndResultCode(
 
 echo \CandidateTest\Helpers\HtmlHelper::GetHtmlFooter();
 
-exit();
+// end of execution
 
 /* Check if string contains lowercase letters, uppercase letters and numbers  */
 
-function getCheckLettersResult(string $inputString = '') {
+function getCheckLettersResult(string $inputString = ''): string {
     $output = \CandidateTest\Group01\StringBasics::CheckIfContainsLowercaseUppercaseNumber($inputString);
     return "<p>String [{$inputString}] contains " . ($output ? '' : 'NOT ') . 'all of uppercase, lowercase and number letters</p>';
 }
 
 /* Convert url to https section */
 
-function getConvertToHttpsResult(string $inputUrl = '') {
+function getConvertToHttpsResult(string $inputUrl = ''): string {
     $output = \CandidateTest\Group01\StringBasics::ConvertUrlToHttps($inputUrl);
     return "<p>Url [{$inputUrl}] converted to: [{$output}]</p>";
 }
@@ -46,7 +46,7 @@ function writeStringEnterAndResultCode(
     string $title,
     ?string $inputString,
     ?string $resultHtml
-) {
+): void {
     echo '
     <fieldset>
         <legend>' . htmlentities($title) . '</legend>
