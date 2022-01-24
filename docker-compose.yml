@@ -3,6 +3,7 @@ services:
 
   nginx:
     image: nginx:latest
+    container_name: ct_nginx
     networks:
       - candidatestest_network
     ports:
@@ -17,18 +18,19 @@ services:
 
   composer:
       image: composer/composer
+      container_name: ct_composer
       networks:
         - candidatestest_network
       ports:
         - "9001:9000"
       volumes:
         - "./html:/composer"
-      container_name: composer
       working_dir: /composer
       command: composer install
   
   php:
     image: php:8.1-fpm
+    container_name: ct_php
     networks:
       - candidatestest_network
     volumes:
