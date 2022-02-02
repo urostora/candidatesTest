@@ -11,7 +11,8 @@ writeStringEnterAndResultCode(
     'checkLetters',
     'Check for lowercase, uppercase and number letters',
     $inputString,
-    $action === 'checkLetters'? getCheckLettersResult($inputString) : ''
+    $action === 'checkLetters'? getCheckLettersResult($inputString) : '',
+    getCheckLettersHelp()
 );
 
 writeStringEnterAndResultCode(
@@ -32,6 +33,16 @@ function getCheckLettersResult(string $inputString = ''): string {
     return "<p>String [{$inputString}] contains " . ($output ? '' : 'NOT ') . 'all of uppercase, lowercase and number letters</p>';
 }
 
+function getCheckLettersHelp(string $inputString = ''): string {
+    return '
+    <ul>
+        <li>Code location: src/classes/Group01/StringBasics.php</li>
+        <li>Method: StringBasics::CheckIfContainsLowercaseUppercaseNumber</li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testCheckIfContainsLowercaseUppercaseNumber</code></li>
+    </ul>
+    ';
+}
+
 /* Convert url to https section */
 
 function getConvertToHttpsResult(string $inputUrl = ''): string {
@@ -45,7 +56,8 @@ function writeStringEnterAndResultCode(
     string $action,
     string $title,
     ?string $inputString,
-    ?string $resultHtml
+    ?string $resultHtml,
+    string $helpHtml = ''
 ): void {
     echo '
     <fieldset>
@@ -56,6 +68,7 @@ function writeStringEnterAndResultCode(
             <input type="submit">
         </form>
         ' . $resultHtml . '
+        ' . $helpHtml . '
     </fieldset>
     ';
 }

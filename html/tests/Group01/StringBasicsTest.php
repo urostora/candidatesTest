@@ -43,6 +43,7 @@ final class StringBasicsTest extends TestCase
 
     public function providerTestConvertUrlToHttps(): array {
         return [
+            ['abc.de', 'https://abc.de'],
             ['//abc.de', 'https://abc.de'],
             ['http://abc.de', 'https://abc.de'],
             ['https://abc.de', 'https://abc.de'],
