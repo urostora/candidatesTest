@@ -19,6 +19,6 @@ class StringBasics {
     public static function ConvertUrlToHttps(string $inputString): string {
         $ret = $inputString;
 
-        return $ret;
+        return "https://{$ret}";
     }
 }

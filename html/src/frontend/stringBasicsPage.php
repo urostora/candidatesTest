@@ -19,7 +19,8 @@ writeStringEnterAndResultCode(
     'convertToHttps',
     'Convert url to https format',
     $inputString,
-    $action === 'convertToHttps'? getConvertToHttpsResult($inputString) : ''
+    $action === 'convertToHttps'? getConvertToHttpsResult($inputString) : '',
+    getConvertToHttpsHelp()
 );
 
 echo \CandidateTest\Helpers\HtmlHelper::GetHtmlFooter();
@@ -47,7 +48,21 @@ function getCheckLettersHelp(string $inputString = ''): string {
 
 function getConvertToHttpsResult(string $inputUrl = ''): string {
     $output = \CandidateTest\Group01\StringBasics::ConvertUrlToHttps($inputUrl);
-    return "<p>Url [{$inputUrl}] converted to: [{$output}]</p>";
+
+    $safeUrl = htmlentities($inputUrl);
+    $safeOutput = htmlentities($output);
+
+    return "<p>Url [{$safeUrl}] converted to: [{$safeOutput}]</p>";
+}
+
+function getConvertToHttpsHelp(string $inputString = ''): string {
+    return '
+    <ul>
+        <li>Code location: src/classes/Group01/StringBasics.php</li>
+        <li>Method: StringBasics::ConvertUrlToHttps</li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testConvertUrlToHttps</code></li>
+    </ul>
+    ';
 }
 
 /* Helpers */
