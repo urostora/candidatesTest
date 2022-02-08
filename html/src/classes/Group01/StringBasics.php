@@ -5,7 +5,12 @@ namespace CandidateTest\Group01;
 class StringBasics {
 
     /**
-     * Visszaadja, hogy a megadott string tartalmaz-e legalább egy kisbetűt, nagybetűt és számot
+     * Returns that the input string contains at least one of these characters:
+     * - uppercase character
+     * - lowercase character
+     * - number
+     * @param string $inputString Input character
+     * @return bool
      */
     public static function CheckIfContainsLowercaseUppercaseNumber(string $inputString): bool {
         return false;
