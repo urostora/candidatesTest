@@ -110,7 +110,7 @@ function writeStringEnterAndResultCode(
         <legend>' . htmlentities($title) . '</legend>
         <form>
             <input type="hidden" name="action" value="' . htmlentities($action) . '" />
-            <input type="text" name="inputString" value="' . htmlentities($inputString ?? '') . '" />
+            <input type="text" style="width: 50vw;" name="inputString" value="' . htmlentities($inputString ?? '') . '" />
             <input type="submit">
         </form>
         ' . $resultHtml . '
