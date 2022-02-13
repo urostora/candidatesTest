@@ -7,7 +7,7 @@ services:
     networks:
       - candidatestest_network
     ports:
-    - "8080:80"
+    - "${APP_PORT}:80"
     volumes:
     - ./html:/html
     - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf
@@ -38,6 +38,29 @@ services:
     depends_on:
       - composer
 
+  db_server:
+    image: mariadb:10
+    container_name: 'ct_db'
+    ports:
+      - '${DB_PORT}:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASS}'
+      MYSQL_USER: '${MYSQL_USER}'
+      MYSQL_PASSWORD: '${MYSQL_PASS}'
+      MYSQL_DATABASE: '${MYSQL_DB}'
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/db/mariadb/my.cnf:/etc/mysql/conf.d/my.cnf
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD
+      interval: 5s
+      retries: 5
+    networks:
+      - candidatestest_network
+
 # networks
 networks:
   candidatestest_network:
+
+volumes:
+  db_data:
