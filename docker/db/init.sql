@@ -6,7 +6,7 @@ if not exists (SELECT 1 FROM information_schema.TABLES t WHERE t.TABLE_SCHEMA = 
 		PRIMARY KEY PK_manufacturer (id)
 	);
 
-	INSERT INTO manufacturer (name) VALUES ('LG', 'Samsung', 'Sony', 'Dell', 'HP');
+	INSERT INTO manufacturer (name) VALUES ('LG'), ('Samsung'), ('Sony'), ('Dell'), ('HP');
 
 END IF;
 
@@ -19,6 +19,35 @@ if not exists (SELECT 1 FROM information_schema.TABLES t WHERE t.TABLE_SCHEMA = 
 		FOREIGN KEY FK_category_parent (parentId) REFERENCES category (id),
 		PRIMARY KEY PK_category (id)
 	);
+
+	INSERT INTO category
+		(name, parentId)
+	VALUES
+		('Számítógép', null),
+		('Asztali PC', 1),
+		('Notebook', 1),
+		('Monitor', null),
+		('22" alatt', 4),
+		('22" - 24" között', 4),
+		('24" felett', 4);
+
+END IF;
+
+if not exists (SELECT 1 FROM information_schema.TABLES t WHERE t.TABLE_SCHEMA = SCHEMA() AND t.TABLE_NAME = 'tag') THEN
+
+	CREATE TABLE tag (
+		id				INT				NOT NULL 	AUTO_INCREMENT,
+		name			VARCHAR(50)		NOT NULL					COMMENT 'Tag name',
+		PRIMARY KEY PK_tag (id)
+	);
+
+	INSERT INTO tag (name)
+	VALUES
+		('Akciós'),
+		('Új'),
+		('Kifutó'),
+		('Előrendelés')
+	;
 
 END IF;
 
@@ -41,15 +70,40 @@ if not exists (SELECT 1 FROM information_schema.TABLES t WHERE t.TABLE_SCHEMA = 
 		FOREIGN KEY FK_product_category (categoryId) REFERENCES category (id)
 	);
 
-END IF;
-
-if not exists (SELECT 1 FROM information_schema.TABLES t WHERE t.TABLE_SCHEMA = SCHEMA() AND t.TABLE_NAME = 'tag') THEN
-
-	CREATE TABLE tag (
-		id				INT				NOT NULL 	AUTO_INCREMENT,
-		name			VARCHAR(50)		NOT NULL					COMMENT 'Tag name',
-		PRIMARY KEY PK_tag (id)
-	);
+	INSERT INTO product
+		(manufacturerId, categoryId, name, description, imageUrl, price, quantity)
+	VALUES
+		(1, 6,
+		'LG 22MP410-B monitor 21,45"', '21,45”-os Full HD monitor
+	AMD FreeSync™
+	Olvasó üzemmód
+	Vibrálásmentes kép
+	DAS / Black Stabilizer / Célkereszt funkció
+	OnScreen Control',
+	'https://www.lg.com/hu/monitorok/lg-22mp410-b',
+	45500,
+	25),
+		(2, 7,
+		'Samsung LS27AG320NUXEN 27" monitor',
+		'165Hz frissítési ráta
+Győzz le minden ellenséget. A 165 Hz-es frissítési frekvencia kiküszöböli a késést és az elmosódottságot, így izgalmas játékmenetet biztosít az ultrasima akciókkal.',
+	'https://www.samsung.com/hu/monitors/gaming/odyssey-g32a-g3-27-inch-165hz---freesync-ls27ag320nuxen/',
+	97800,
+	8),
+		(2, 7,
+		'Samsung LS27AG320NUXEN 27" monitor',
+		'165Hz frissítési ráta
+Győzz le minden ellenséget. A 165 Hz-es frissítési frekvencia kiküszöböli a késést és az elmosódottságot, így izgalmas játékmenetet biztosít az ultrasima akciókkal.',
+		'https://www.samsung.com/hu/monitors/gaming/odyssey-g32a-g3-27-inch-165hz---freesync-ls27ag320nuxen/',
+		97800,
+		8),
+		(5, 3,
+		'HP ProBook 455 G8 Notebook PC 1Y9H1AV',
+		'HP ProBook 455 G8 noteszgép, 15.6", Windows 10 Pro, AMD Ryzen™ 5, 8GB RAM, 256GB SSD-meghajtó, FHD',
+		'https://www.hp.com/hu-hu/products/laptops/product-details/2100833391',
+		365000,
+		13)
+	;
 
 END IF;
 
