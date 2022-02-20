@@ -1,4 +1,6 @@
 
+SET NAMES utf8mb4;
+
 DROP PROCEDURE IF EXISTS init_db;
 
 DELIMITER $$
