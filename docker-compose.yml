@@ -29,8 +29,16 @@ services:
       command: composer install
   
   php:
-    image: php:8.1-fpm
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
     container_name: ct_php
+    environment:
+      MYSQL_SERVER: 'ct_db'
+      MYSQL_PORT: '3306'
+      MYSQL_USER: '${MYSQL_USER}'
+      MYSQL_PASSWORD: '${MYSQL_PASS}'
+      MYSQL_DATABASE: '${MYSQL_DB}'
     networks:
       - candidatestest_network
     volumes:
