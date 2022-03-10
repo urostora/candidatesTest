@@ -9,7 +9,7 @@ class HtmlHelper {
           <title>' . htmlspecialchars($title) . '</title>
         </head>
         <body>
-            <h3>Basic string operations</h3>
+            <h3>' . htmlspecialchars($title) . '</h3>
             <a href="/">Back</a>
             <br />
             <br />
