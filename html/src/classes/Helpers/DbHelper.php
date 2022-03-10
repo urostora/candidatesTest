@@ -5,8 +5,8 @@ namespace CandidateTest\Helpers;
 use mysqli;
 
 class DbHelper {
-    private static ?\PDO $pdoObject = null;
-    private static ?mysqli $mysqliConnection = null;
+    protected static ?\PDO $pdoObject = null;
+    protected static ?mysqli $mysqliConnection = null;
 
     public static function getPdoConnection(): \PDO {
         if (is_null(static::$pdoObject)) {
@@ -22,11 +22,11 @@ class DbHelper {
         return static::$pdoObject;
     }
     
-    private static function getPdoDsn(): string {
+    protected static function getPdoDsn(): string {
         return "mysql:host={$_ENV['MYSQL_SERVER']};port={$_ENV['MYSQL_PORT']};dbname={$_ENV['MYSQL_DATABASE']}";
     }
 
-    public static function getMysqliConnection() {
+    public static function getMysqliConnection(): \mysqli {
         if (static::$mysqliConnection == null) {
             static::$mysqliConnection = new mysqli(
                 $_ENV['MYSQL_SERVER'],
