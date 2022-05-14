@@ -6,4 +6,4 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../vendor/autoload.php';
 
 $employees = \CandidateTest\Group01\Types\Employee::getSampleEmployees();
 
-echo '<pre>' . print_r($employees, true) . '</pre>';
+echo '<pre>' . implode("\n", $employees) . '</pre>';

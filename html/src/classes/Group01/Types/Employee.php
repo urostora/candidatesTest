@@ -42,4 +42,12 @@ class Employee {
             $sampleData,
         );
     }
+
+    public function __toString()
+    {
+        $birthday = $this->birthday->format('Y-m-d');
+        $hiredOn = $this->birthday->format('Y-m-d');
+
+        return "{$this->name} [{$birthday}, hired on {$hiredOn}] group: {$this->group}, salary: {$this->salary}";
+    }
 }
