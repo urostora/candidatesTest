@@ -34,7 +34,7 @@ class Employee {
             ['name' => 'Sue Pollack', 'birthday' => '1994-02-02', 'hiredOn' => '2020-01-21', 'group' => 'IT', 'salary' => 55000],
             ['name' => 'Anna Lena', 'birthday' => '1977-03-15', 'hiredOn' => '2007-06-14', 'group' => 'Cleaning', 'salary' => 32000],
             ['name' => 'Victor Gray', 'birthday' => '1997-10-17', 'hiredOn' => '2010-05-08', 'group' => 'Sales', 'salary' => 52000],
-            ['name' => 'Alex White', 'birthday' => '1983-01-09', 'hiredOn' => '2018-12-01', 'group' => 'Sals', 'salary' => 37000],
+            ['name' => 'Alex White', 'birthday' => '1983-01-09', 'hiredOn' => '2018-12-01', 'group' => 'Sales', 'salary' => 37000],
         ];
 
         return array_map(

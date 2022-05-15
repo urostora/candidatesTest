@@ -23,13 +23,28 @@ writeResult(
 );
 
 
+$result = \CandidateTest\Group01\ArrayBasics::getMaxSalaryPerGroup($employees);
+$resultString = '<ul>';
+foreach($result as $key => $value) {
+    $resultString .= "<li>$key - $value</li>";
+}
+$resultString .= '</ul>';
+
+writeResult(
+    'Get greatest salary per group',
+    $resultString,
+    getMaxSalaryPerGroupHelp()
+);
+
+
+
 echo \CandidateTest\Helpers\HtmlHelper::GetHtmlFooter();
 
 // end of execution
 
-/* Check if string contains lowercase letters, uppercase letters and numbers  */
+/* get employee with the greatest salary */
 
-function getGreatestSalaryHelp(string $inputString = ''): string {
+function getGreatestSalaryHelp(): string {
     return '
     <ul>
         <li>Code location: src/classes/Group01/ArrayBasics.php</li>
@@ -39,46 +54,14 @@ function getGreatestSalaryHelp(string $inputString = ''): string {
     ';
 }
 
-/* Convert url to https section */
+/* get the greatest salary per group */
 
-function getConvertToHttpsResult(string $inputUrl = ''): string {
-    $output = \CandidateTest\Group01\StringBasics::ConvertUrlToHttps($inputUrl);
-
-    $safeUrl = htmlentities($inputUrl);
-    $safeOutput = htmlentities($output);
-
-    return "<p>Url [{$safeUrl}] converted to: [{$safeOutput}]</p>";
-}
-
-function getConvertToHttpsHelp(string $inputString = ''): string {
+function getMaxSalaryPerGroupHelp(): string {
     return '
     <ul>
-        <li>Code location: src/classes/Group01/StringBasics.php</li>
-        <li>Method: StringBasics::ConvertUrlToHttps</li>
-        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testConvertUrlToHttps</code></li>
-    </ul>
-    ';
-}
-
-
-
-/* Get issue numbers */
-
-function getGetIssueNumbersResult(string $inputString = ''): string {
-    $output = \CandidateTest\Group01\StringBasics::GetIssueNumbers($inputString);
-
-    $safeString = htmlentities($inputString);
-    $safeOutput = sprintf('<pre>%s</pre>', print_r($output, true));
-
-    return "<p>Issue numbers in string [{$safeString}] are: [{$safeOutput}]</p>";
-}
-
-function getGetIssueNumbersHelp(string $inputString = ''): string {
-    return '
-    <ul>
-        <li>Code location: src/classes/Group01/StringBasics.php</li>
-        <li>Method: StringBasics::GetIssueNumbers</li>
-        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testGetIssueNumbers</code></li>
+        <li>Code location: src/classes/Group01/ArrayBasics.php</li>
+        <li>Method: ArrayBasics::getMaxSalaryPerGroup</li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testGetMaxSalaryPerGroup</code></li>
     </ul>
     ';
 }
