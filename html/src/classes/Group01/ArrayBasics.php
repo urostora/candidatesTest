@@ -44,7 +44,7 @@ class ArrayBasics {
     /**
      * Return the greates salary per group
      *
-     * @param Employee $employees
+     * @param Employee[] $employees
      * 
      * @return Employee[]
      * 
