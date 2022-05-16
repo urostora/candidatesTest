@@ -35,6 +35,6 @@ class StringBasics {
      * @return array<string> Array of issue numbers found in input string
      */
     public static function GetIssueNumbers(string $inputString): array {
-        return ['ABCD-123456'];
+        return ['ABCD-123456', 'LKJH-765432'];
     }
 }
