@@ -16,6 +16,8 @@ array_walk(
 );
 echo '</ul>';
 
+echo '<h3>Results:</h3><ul>';
+
 writeResult(
     'Get employee with greatest salary',
     \CandidateTest\Group01\ArrayBasics::getMaxSalaryEmployee($employees),
@@ -36,6 +38,19 @@ writeResult(
     getMaxSalaryPerGroupHelp()
 );
 
+
+$result2 = \CandidateTest\Group01\ArrayBasics::getEmployeesOrderedByGroupAndBirthDate($employees);
+$resultString2 = '<ul>';
+foreach($result2 as $key => $value) {
+    $resultString2 .= "<li>$key - $value</li>";
+}
+$resultString2 .= '</ul>';
+
+writeResult(
+    'Order employees by group and birth date',
+    $resultString2,
+    getEmployeesOrderedByGroupAndBirthDateHelp()
+);
 
 
 echo \CandidateTest\Helpers\HtmlHelper::GetHtmlFooter();
@@ -66,6 +81,18 @@ function getMaxSalaryPerGroupHelp(): string {
     ';
 }
 
+/* order employees by group and birthdate */
+
+function getEmployeesOrderedByGroupAndBirthDateHelp(): string {
+    return '
+    <ul>
+        <li>Code location: src/classes/Group01/ArrayBasics.php</li>
+        <li>Method: ArrayBasics::getEmployeesOrderedByGroupAndBirthDate</li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testGetEmployeesOrderedByGroupAndBirthDate</code></li>
+    </ul>
+    ';
+}
+
 /* Helpers */
 
 function writeResult(
@@ -76,7 +103,9 @@ function writeResult(
     echo '
     <fieldset>
         <legend>' . htmlentities($title) . '</legend>
+        <h4>Result:</h4>
         ' . $resultHtml . '
+        <h4>Code location:</h4>
         ' . $helpHtml . '
     </fieldset>
     ';

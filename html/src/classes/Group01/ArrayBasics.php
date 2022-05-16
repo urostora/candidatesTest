@@ -34,4 +34,25 @@ class ArrayBasics {
         ];
     }
 
+    /**
+     * Return the greates salary per group
+     *
+     * @param array $employees
+     * 
+     * @return Employee[]
+     * 
+     */
+    public static function getEmployeesOrderedByGroupAndBirthDate(array $employees): array {
+        usort(
+            $employees,
+            function(Employee $e1, Employee $e2) {
+                if ($e1->group === $e2->group) {
+                    return $e1->birthday->getTimestamp() - $e2->birthday->getTimestamp();
+                }
+
+                return strcmp($e1->group, $e2->group);
+            }
+        );
+        return $employees;
+    }
 }
