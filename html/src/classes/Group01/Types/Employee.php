@@ -9,6 +9,14 @@ class Employee {
     public string $group;
     public int $salary;
 
+    /**
+     * Create sample array of employee data
+     *
+     * @param array{'name': string, 'birthday': string, 'hiredOn': string, 'group': string, 'salary': int} $data
+     * 
+     * @return Employee
+     * 
+     */
     public static function createFromData(array $data): Employee {
         $ret = new Employee();
 
@@ -22,7 +30,7 @@ class Employee {
     }
 
     /**
-     * @returns Employee[]
+     * @return Employee[]
      */
     public static function getSampleEmployees(): array {
         $sampleData = [

@@ -30,7 +30,7 @@ class ArrayBasics {
      *
      * @param Employee[] $employees
      * 
-     * @return array
+     * @return array<string, int>
      * 
      */
     public static function getMaxSalaryPerGroup(array $employees): array {
