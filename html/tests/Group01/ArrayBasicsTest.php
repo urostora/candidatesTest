@@ -94,6 +94,49 @@ final class ArrayBasicsTest extends TestCase
     }
 
     /**
+     * @dataProvider providerTestGetEmployeesOrderedSalary
+     */
+    public function testGetEmployeesOrderedBySalary(array $input, array $expected) {
+        $value = ArrayBasics::getEmployeesOrderedBySalary($input);
+
+        $this->assertSame($expected, $value);
+    }
+
+    public function providerTestGetEmployeesOrderedSalary(): array {
+        $sample1 = Employee::getSampleEmployees();
+        $expected1 = [
+            $sample1[3],
+            $sample1[6],
+            $sample1[8],
+            $sample1[0],
+            $sample1[7],
+            $sample1[5],
+            $sample1[4],
+            $sample1[2],
+            $sample1[1],
+        ];
+
+        $sample2 = Employee::getSampleEmployees();
+        $sample2[3]->salary = 35000;
+        $expected2 = [
+            $sample2[6],
+            $sample2[3],
+            $sample2[8],
+            $sample2[0],
+            $sample2[7],
+            $sample2[5],
+            $sample2[4],
+            $sample2[2],
+            $sample2[1],
+        ];
+
+        return [
+            [$sample1, $expected1],
+            [$sample2, $expected2],
+        ];
+    }
+
+    /**
      * @dataProvider providerTestGetEmployeesOrderedByGroupAndBirthDate
      */
     public function testGetEmployeesOrderedByGroupAndBirthDate(array $input, array $expected) {

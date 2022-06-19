@@ -39,6 +39,20 @@ writeResult(
 );
 
 
+$result3 = \CandidateTest\Group01\ArrayBasics::getEmployeesOrderedBySalary($employees);
+$resultString3 = '<ul>';
+foreach($result3 as $key => $value) {
+    $resultString3 .= "<li>$key - $value</li>";
+}
+$resultString3 .= '</ul>';
+
+writeResult(
+    'Order employees by salary',
+    $resultString3,
+    getEmployeesOrderedBySalaryHelp()
+);
+
+
 $result2 = \CandidateTest\Group01\ArrayBasics::getEmployeesOrderedByGroupAndBirthDate($employees);
 $resultString2 = '<ul>';
 foreach($result2 as $key => $value) {
@@ -77,6 +91,18 @@ function getMaxSalaryPerGroupHelp(): string {
         <li>Code location: src/classes/Group01/ArrayBasics.php</li>
         <li>Method: ArrayBasics::getMaxSalaryPerGroup</li>
         <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testGetMaxSalaryPerGroup</code></li>
+    </ul>
+    ';
+}
+
+/* order employees by salary */
+
+function getEmployeesOrderedBySalaryHelp(): string {
+    return '
+    <ul>
+        <li>Code location: src/classes/Group01/ArrayBasics.php</li>
+        <li>Method: ArrayBasics::getEmployeesOrderedBySalary</li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testGetEmployeesOrderedBySalary</code></li>
     </ul>
     ';
 }

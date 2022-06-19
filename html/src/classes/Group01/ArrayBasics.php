@@ -49,6 +49,18 @@ class ArrayBasics {
      * @return Employee[]
      * 
      */
+    public static function getEmployeesOrderedBySalary(array $employees): array {
+        return $employees;
+    }
+
+    /**
+     * Return the greates salary per group
+     *
+     * @param Employee[] $employees
+     * 
+     * @return Employee[]
+     * 
+     */
     public static function getEmployeesOrderedByGroupAndBirthDate(array $employees): array {
         return $employees;
     }
