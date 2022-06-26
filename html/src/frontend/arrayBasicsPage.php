@@ -1,9 +1,21 @@
 <?php
 
+use CandidateTest\Group01\ArrayBasics;
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/../vendor/autoload.php';
 
 echo \CandidateTest\Helpers\HtmlHelper::GetHtmlHeader('Array basics');
 
+// group array
+
+writeResult(
+    'Group array into sub-arrays',
+    getGroupArrayResult(),
+    getGroupArrayHelp()
+);
+
+
+// Employee-based tests
 
 $employees = \CandidateTest\Group01\Types\Employee::getSampleEmployees();
 
@@ -70,6 +82,45 @@ writeResult(
 echo \CandidateTest\Helpers\HtmlHelper::GetHtmlFooter();
 
 // end of execution
+
+/* get group array */
+
+function getGroupArrayResult() {
+    $inputString = $_GET['groupArrayString'] ?? '1, 2, 3, 4, 5, 6'; 
+    $groupSize = (int)($_GET['groupArrayNumber'] ?? 2);
+
+    $inputArray = array_map(
+        fn($s) => trim($s),
+        explode(',', $inputString)
+    );
+
+    $result = ArrayBasics::getGroupedArray($inputArray, $groupSize);
+
+    $ret = '<p>
+        <form>
+            <input type="textbox" name="groupArrayString" style="width: 50vw;" value="' . htmlentities($inputString) . '" />
+            <br />
+            <input type="number" name="groupArrayNumber" value="' . (int)$groupSize . '" />
+            <br />
+            <input type="submit" value="Küldés" />
+        </form>
+    </p>
+    <p> Result (group size is ' . $groupSize . '):</p>
+    <p><pre>' . htmlentities(print_r($result, true)) . '</pre></p>
+    ';
+
+    return $ret;
+}
+
+function getGroupArrayHelp(): string {
+    return '
+    <ul>
+        <li>Code location: src/classes/Group01/ArrayBasics.php</li>
+        <li>Method: ArrayBasics::getGroupedArray</li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testGetGroupedArray</code></li>
+    </ul>
+    ';
+}
 
 /* get employee with the greatest salary */
 

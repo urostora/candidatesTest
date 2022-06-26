@@ -10,6 +10,24 @@ use CandidateTest\Group01\Types\Employee;
 
 final class ArrayBasicsTest extends TestCase
 {
+
+    /**
+     * @dataProvider providerGetGroupedArrayTest
+     */
+    public function testGetGroupedArray(array $input, int $groupSize, array $expected): void {
+        $value = ArrayBasics::getGroupedArray($input, $groupSize);
+
+        $this->assertSame($expected, $value);
+    }
+
+    public function providerGetGroupedArrayTest(): array {
+        return [
+            [[1,2,3,4,5,6], 2, [[1, 2], [3, 4], [5, 6]]],
+            [[1,2,3,4,5,6], 3, [[1,2,3], [4,5,6]]],
+            [['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'], 3, [['one', 'two', 'three'], ['four', 'five', 'six'], ['seven', 'eight']]],
+        ];
+    }
+
     /**
      * @dataProvider providerTestGetMaxSalaryEmployee
      */
