@@ -13,7 +13,27 @@ class DbBasics {
         $connection = DbHelper::getPdoConnection();
         // $connection = DbHelper::getMysqliConnection();
 
-        echo 'Placeholder of the manufacturers selector';
+        $sql = 'SELECT id, name from manufacturer ORDER BY name';
+
+        $stmt = $connection->prepare($sql);
+
+        try {
+            $stmt->execute();
+
+            $results = $stmt->fetchAll(\PDO::FETCH_CLASS);
+
+            echo '<select>';
+            foreach($results as $res) {
+                $safeName = htmlentities($res->name);
+                echo "<option value=\"{$res->id}\">{$safeName}</option>";
+            }
+            
+            echo '</select>';
+        } catch (\Exception $ex) {
+            echo "Error while getting manufacturers: {$ex->getMessage()}";
+        }
+
+        // echo 'Placeholder of the manufacturers selector';
     }
 
     /**
