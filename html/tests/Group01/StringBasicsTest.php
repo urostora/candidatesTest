@@ -73,4 +73,22 @@ final class StringBasicsTest extends TestCase
             ['ABCD-123456']],
         ];
     }
+
+
+    /**
+     * @dataProvider providerTestCapitalizeEachWord
+     */
+    public function testCapitalizeEachWord(string $input, string $expected): void {
+        $value = StringBasics::CapitalizeEachWord($input);
+
+        $this->assertSame($expected, $value);
+    }
+
+    public function providerTestCapitalizeEachWord(): array {
+        return [
+            ['very Fairy tales', 'Very Fairy Tales'],
+            ['bimm bamm bumm', 'Bimm Bamm Bumm'],
+            ['did you see 2pac somewhere?', 'Did You See 2pac Somewhere?'],
+        ];
+    }
 }

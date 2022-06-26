@@ -33,6 +33,15 @@ writeStringEnterAndResultCode(
     true
 );
 
+writeStringEnterAndResultCode(
+    'capitalizeEachWord',
+    'Capitalize each word that begins with letter (very fairy tales => Very Fairy Tales)',
+    'capitalizeEachWordResult',
+    'hello Mike, have a great Holiday',
+    getCapitalizeEachWordHelp(),
+    true
+);
+
 echo '</form>';
 
 echo \CandidateTest\Helpers\HtmlHelper::GetHtmlFooter();
@@ -86,7 +95,7 @@ function getGetIssueNumbersResult(string $inputString = ''): string {
     $safeString = htmlentities($inputString);
     $safeOutput = sprintf('<pre>%s</pre>', print_r($output, true));
 
-    return "<p>Issue numbers in string [{$safeString}] are: [{$safeOutput}]</p>";
+    return "<p>Issue numbers in string [{$safeString}] are: {$safeOutput}</p>";
 }
 
 function getGetIssueNumbersHelp(string $inputString = ''): string {
@@ -95,6 +104,27 @@ function getGetIssueNumbersHelp(string $inputString = ''): string {
         <li>Code location: src/classes/Group01/StringBasics.php</li>
         <li>Method: StringBasics::GetIssueNumbers</li>
         <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testGetIssueNumbers</code></li>
+    </ul>
+    ';
+}
+
+/* Capitalize each word */
+
+function capitalizeEachWordResult(string $inputString = ''): string {
+    $output = \CandidateTest\Group01\StringBasics::CapitalizeEachWord($inputString);
+
+    $safeString = htmlentities($inputString);
+    $safeOutput = htmlentities($output);
+
+    return "<p>capitalized string [{$safeString}] is: {$safeOutput}</p>";
+}
+
+function getCapitalizeEachWordHelp(string $inputString = ''): string {
+    return '
+    <ul>
+        <li>Code location: src/classes/Group01/StringBasics.php</li>
+        <li>Method: StringBasics::CapitalizeEachWord</li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testCapitalizeEachWord</code></li>
     </ul>
     ';
 }

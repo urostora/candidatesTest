@@ -37,4 +37,15 @@ class StringBasics {
     public static function GetIssueNumbers(string $inputString): array {
         return ['ABCD-123456', 'LKJH-765432'];
     }
+
+    /**
+     * Capitalize each word.
+     *
+     * @method static string CapitaliyeEachWord(string $inputString)
+     * @example StringBasics::CapitaliyeEachWord('hello there') === 'Hello There'
+     * @example StringBasics::CapitaliyeEachWord("hey, so it's working!") === "Hey, So It's Working!"
+     */
+    public static function CapitalizeEachWord(string $inputString = ''): string {
+        return $inputString;
+    }
 }
