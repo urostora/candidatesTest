@@ -3,33 +3,37 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/../vendor/autoload.php';
 
 $action = filter_input(INPUT_GET, 'action');
-$inputString = filter_input(INPUT_GET, 'inputString');
 
 echo \CandidateTest\Helpers\HtmlHelper::GetHtmlHeader('String basics');
+
+echo '<form>';
 
 writeStringEnterAndResultCode(
     'checkLetters',
     'Check for lowercase, uppercase and number letters',
-    $inputString,
-    $action === 'checkLetters'? getCheckLettersResult($inputString) : '',
+    'getCheckLettersResult',
+    'Qwer1234',
     getCheckLettersHelp()
 );
 
 writeStringEnterAndResultCode(
     'convertToHttps',
     'Convert url to https format',
-    $inputString,
-    $action === 'convertToHttps'? getConvertToHttpsResult($inputString) : '',
+    'getConvertToHttpsResult',
+    'https://mysite.com',
     getConvertToHttpsHelp()
 );
 
 writeStringEnterAndResultCode(
     'getIssueNumbers',
     'Get issue numbers (like ASDF-123456) from string',
-    $inputString,
-    $action === 'getIssueNumbers'? getGetIssueNumbersResult($inputString) : '',
-    getGetIssueNumbersHelp()
+    'getGetIssueNumbersResult',
+    'Minions ipsum UKSR-98765489 underweaaar potatoooo hahaha SDgD-985413748 hahaha baboiii ABCD-123456 chasy. Jeje me want bananaaa! Ti aamoo! Bee (ERUE-951234) do bee do bee do. Ti aamoo! poulet tikka masala potatoooo bee do bee do bee do. Butt poopayee bananaaaa chasy baboiii po kass pepete poopayee wiiiii belloo!, QWER-987654',
+    getGetIssueNumbersHelp(),
+    true
 );
+
+echo '</form>';
 
 echo \CandidateTest\Helpers\HtmlHelper::GetHtmlFooter();
 
@@ -74,7 +78,6 @@ function getConvertToHttpsHelp(string $inputString = ''): string {
 }
 
 
-
 /* Get issue numbers */
 
 function getGetIssueNumbersResult(string $inputString = ''): string {
@@ -101,19 +104,23 @@ function getGetIssueNumbersHelp(string $inputString = ''): string {
 function writeStringEnterAndResultCode(
     string $action,
     string $title,
-    ?string $inputString,
-    ?string $resultHtml,
-    string $helpHtml = ''
+    callable $callback,
+    string $defaultContent,
+    string $helpHtml = '',
+    $showTextarea = false
 ): void {
+    $inputString = $_GET[$action] ?? $defaultContent ?? '';
+
+    $input = $showTextarea
+        ? '<textarea style="width: 50vw;" rows="4" name="' . $action . '">' . htmlentities($inputString ?? '') . '</textarea>'
+        : '<input type="text" style="width: 50vw;" name="' . $action . '" value="' . htmlentities($inputString ?? '') . '" />';
+
     echo '
     <fieldset>
         <legend>' . htmlentities($title) . '</legend>
-        <form>
-            <input type="hidden" name="action" value="' . htmlentities($action) . '" />
-            <input type="text" style="width: 50vw;" name="inputString" value="' . htmlentities($inputString ?? '') . '" />
+            ' . $input . '
             <input type="submit">
-        </form>
-        ' . $resultHtml . '
+        ' . call_user_func($callback, $inputString) . '
         ' . $helpHtml . '
     </fieldset>
     ';
