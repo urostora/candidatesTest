@@ -13,7 +13,22 @@ class StringBasics {
      * @return bool
      */
     public static function CheckIfContainsLowercaseUppercaseNumber(string $inputString): bool {
-        return false;
+        $pattern = '/[A-Z]/';
+        if (!preg_match($pattern, $inputString)) {
+            return false;
+        }
+        
+        $pattern = '/[a-z]/';
+        if (!preg_match($pattern, $inputString)) {
+            return false;
+        }
+        
+        $pattern = '/\d/';
+        if (!preg_match($pattern, $inputString)) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -22,6 +37,11 @@ class StringBasics {
      * @return string url in https scheme: https://abc.de
      */
     public static function ConvertUrlToHttps(string $inputString): string {
+        $pattern = '/^((http[s]?:)?\/\/)?/';
+        $ret = preg_replace($pattern, 'https://', $inputString);
+        return $ret;
+
+
         $ret = $inputString;
 
         return "https://{$ret}";
@@ -35,6 +55,12 @@ class StringBasics {
      * @return array<string> Array of issue numbers found in input string
      */
     public static function GetIssueNumbers(string $inputString): array {
+        $pattern = '/[A-Z]{4}-\d{6}/';
+
+        preg_match_all($pattern, $inputString, $matches);
+
+        return $matches[0] ?? [];
+
         return ['ABCD-123456', 'LKJH-765432'];
     }
 
@@ -46,6 +72,8 @@ class StringBasics {
      * @example StringBasics::CapitaliyeEachWord("hey, so it's working!") === "Hey, So It's Working!"
      */
     public static function CapitalizeEachWord(string $inputString = ''): string {
+        return ucwords($inputString);
+
         return $inputString;
     }
 }

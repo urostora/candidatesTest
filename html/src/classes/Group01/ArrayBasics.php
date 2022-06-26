@@ -15,6 +15,24 @@ class ArrayBasics {
      * @example ArrayBasics::getGroupedArray([1, 2, 3, 4, 5], 6) -> [[ 1, 2, 3, 4, 5]]
      */
     public static function getGroupedArray(array $inputArray, int $groupSize) {
+        $ret = [];
+        $currentGroup = [];
+
+        foreach($inputArray as $value) {
+            $currentGroup[] = $value;
+
+            if (count($currentGroup) >= $groupSize) {
+                $ret[] = $currentGroup;
+                $currentGroup = [];
+            }
+        }
+
+        if (!empty($currentGroup)) {
+            $ret[] = $currentGroup;
+        }
+
+        return $ret;
+
         return [['1', '2'], ['3', '4'], ['5', '6']];
     }
 
@@ -27,7 +45,19 @@ class ArrayBasics {
      * 
      */
     public static function getMaxSalaryEmployee(array $employees): ?Employee {
-        return $employees[0] ?? null;
+        return array_reduce(
+            $employees,
+            function(?Employee $carry, Employee $value) {
+                if (is_null($carry) || $carry->salary < $value->salary) {
+                    $carry = $value;
+                }
+
+                return $carry;
+            },
+            null
+        );
+
+        // return $employees[0] ?? null;
     }
 
     /**
@@ -46,6 +76,19 @@ class ArrayBasics {
      * 
      */
     public static function getMaxSalaryPerGroup(array $employees): array {
+        return array_reduce(
+            $employees,
+
+            function(array $carry, Employee $value) {
+                if (!isset($carry[$value->group]) || $carry[$value->group] < $value->salary) {
+                    $carry[$value->group] = $value->salary;
+                }
+
+                return $carry;
+            },
+            []
+        );
+
         return [
             'group1' => 100,
             'group2' => 200,
@@ -62,6 +105,13 @@ class ArrayBasics {
      * 
      */
     public static function getEmployeesOrderedBySalary(array $employees): array {
+        usort(
+            $employees,
+            function (Employee $e1, Employee $e2) {
+                return $e1->salary - $e2->salary;
+            }
+        );
+
         return $employees;
     }
 
@@ -74,6 +124,17 @@ class ArrayBasics {
      * 
      */
     public static function getEmployeesOrderedByGroupAndBirthDate(array $employees): array {
+        usort(
+            $employees,
+            function (Employee $e1, Employee $e2) {
+                if ($e1->group !== $e2->group) {
+                    return strcmp($e1->group, $e2->group);
+                }
+
+                return $e1->birthday->getTimestamp() - $e2->birthday->getTimestamp();
+            }
+        );
+
         return $employees;
     }
 }
