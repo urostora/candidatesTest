@@ -13,8 +13,13 @@ class ArrayBasics {
      * @example ArrayBasics::getGroupedArray([1, 2, 3, 4, 5], 2) -> [[ 1, 2], [3, 4], [5]]
      * @example ArrayBasics::getGroupedArray([1, 2, 3, 4, 5], 3) -> [[ 1, 2, 3], [4, 5]]
      * @example ArrayBasics::getGroupedArray([1, 2, 3, 4, 5], 6) -> [[ 1, 2, 3, 4, 5]]
+     * 
+     * @param array<string> $inputArray
+     * @param int $groupSize
+     * 
+     * @return array<int, array<int, string>>
      */
-    public static function getGroupedArray(array $inputArray, int $groupSize) {
+    public static function getGroupedArray(array $inputArray, int $groupSize): array {
         return [['1', '2'], ['3', '4'], ['5', '6']];
     }
 
