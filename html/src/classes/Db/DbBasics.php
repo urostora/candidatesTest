@@ -4,12 +4,14 @@ namespace CandidateTest\Db;
 
 use CandidateTest\Helpers\DbHelper;
 
-class DbBasics {
+class DbBasics
+{
 
     /**
      * Render (echo) a "select" HTML component filled with manufacturers from the database
      */
-    public static function renderManufacturersSelectComponent(): void {
+    public static function renderManufacturersSelectComponent(): void
+    {
         $connection = DbHelper::getPdoConnection();
         // $connection = DbHelper::getMysqliConnection();
 
@@ -18,12 +20,13 @@ class DbBasics {
 
     /**
      * Render (echo) a "table" (or else suitable) HTML component filled with all products from the database
-     * 
+     *
      * Columns:
      * product.product.id, category.name, manufacturer.name, product.name, product.price
-     * 
+     *
      */
-    public static function renderProductList(): void {
+    public static function renderProductList(): void
+    {
         $connection = DbHelper::getPdoConnection();
         // $connection = DbHelper::getMysqliConnection();
 

@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../vendor/autoload.php';
 
 $action = filter_input(INPUT_GET, 'action');
 
-echo \CandidateTest\Helpers\HtmlHelper::GetHtmlHeader('String basics');
+echo \CandidateTest\Helpers\HtmlHelper::getHtmlHeader('String basics');
 
 echo '<form>';
 
@@ -44,18 +44,20 @@ writeStringEnterAndResultCode(
 
 echo '</form>';
 
-echo \CandidateTest\Helpers\HtmlHelper::GetHtmlFooter();
+echo \CandidateTest\Helpers\HtmlHelper::getHtmlFooter();
 
 // end of execution
 
 /* Check if string contains lowercase letters, uppercase letters and numbers  */
 
-function getCheckLettersResult(string $inputString = ''): string {
-    $output = \CandidateTest\Group01\StringBasics::CheckIfContainsLowercaseUppercaseNumber($inputString);
+function getCheckLettersResult(string $inputString = ''): string
+{
+    $output = \CandidateTest\Group01\StringBasics::checkIfContainsLowercaseUppercaseNumber($inputString);
     return "<p>String [{$inputString}] contains " . ($output ? '' : 'NOT ') . 'all of uppercase, lowercase and number letters</p>';
 }
 
-function getCheckLettersHelp(string $inputString = ''): string {
+function getCheckLettersHelp(string $inputString = ''): string
+{
     return '
     <ul>
         <li>Code location: src/classes/Group01/StringBasics.php</li>
@@ -67,8 +69,9 @@ function getCheckLettersHelp(string $inputString = ''): string {
 
 /* Convert url to https section */
 
-function getConvertToHttpsResult(string $inputUrl = ''): string {
-    $output = \CandidateTest\Group01\StringBasics::ConvertUrlToHttps($inputUrl);
+function getConvertToHttpsResult(string $inputUrl = ''): string
+{
+    $output = \CandidateTest\Group01\StringBasics::convertUrlToHttps($inputUrl);
 
     $safeUrl = htmlentities($inputUrl);
     $safeOutput = htmlentities($output);
@@ -76,7 +79,8 @@ function getConvertToHttpsResult(string $inputUrl = ''): string {
     return "<p>Url [{$safeUrl}] converted to: [{$safeOutput}]</p>";
 }
 
-function getConvertToHttpsHelp(string $inputString = ''): string {
+function getConvertToHttpsHelp(string $inputString = ''): string
+{
     return '
     <ul>
         <li>Code location: src/classes/Group01/StringBasics.php</li>
@@ -89,8 +93,9 @@ function getConvertToHttpsHelp(string $inputString = ''): string {
 
 /* Get issue numbers */
 
-function getGetIssueNumbersResult(string $inputString = ''): string {
-    $output = \CandidateTest\Group01\StringBasics::GetIssueNumbers($inputString);
+function getGetIssueNumbersResult(string $inputString = ''): string
+{
+    $output = \CandidateTest\Group01\StringBasics::getIssueNumbers($inputString);
 
     $safeString = htmlentities($inputString);
     $safeOutput = sprintf('<pre>%s</pre>', print_r($output, true));
@@ -98,7 +103,8 @@ function getGetIssueNumbersResult(string $inputString = ''): string {
     return "<p>Issue numbers in string [{$safeString}] are: {$safeOutput}</p>";
 }
 
-function getGetIssueNumbersHelp(string $inputString = ''): string {
+function getGetIssueNumbersHelp(string $inputString = ''): string
+{
     return '
     <ul>
         <li>Code location: src/classes/Group01/StringBasics.php</li>
@@ -110,8 +116,9 @@ function getGetIssueNumbersHelp(string $inputString = ''): string {
 
 /* Capitalize each word */
 
-function capitalizeEachWordResult(string $inputString = ''): string {
-    $output = \CandidateTest\Group01\StringBasics::CapitalizeEachWord($inputString);
+function capitalizeEachWordResult(string $inputString = ''): string
+{
+    $output = \CandidateTest\Group01\StringBasics::capitalizeEachWord($inputString);
 
     $safeString = htmlentities($inputString);
     $safeOutput = htmlentities($output);
@@ -119,7 +126,8 @@ function capitalizeEachWordResult(string $inputString = ''): string {
     return "<p>capitalized string [{$safeString}] is: {$safeOutput}</p>";
 }
 
-function getCapitalizeEachWordHelp(string $inputString = ''): string {
+function getCapitalizeEachWordHelp(string $inputString = ''): string
+{
     return '
     <ul>
         <li>Code location: src/classes/Group01/StringBasics.php</li>

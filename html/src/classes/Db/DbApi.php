@@ -4,7 +4,8 @@ namespace CandidateTest\Db;
 
 use CandidateTest\Helpers\DbHelper;
 
-class DbApi {
+class DbApi
+{
 
     /**
         - process incoming parameters (manufacturer name)
@@ -12,13 +13,14 @@ class DbApi {
         - possible problems:
             - manufacturer with this name already exists
             - new manufacturer name is empty string
-        - take care of SQL injection attacks 
+        - take care of SQL injection attacks
      */
-    protected static function handleAddManufacturer(): void {
-        
+    protected static function handleAddManufacturer(): void
+    {
     }
 
-    public static function handleDbApiRequest(): void {
+    public static function handleDbApiRequest(): void
+    {
         $action = filter_input(INPUT_POST, 'action');
         $ret = null;
 
@@ -33,7 +35,6 @@ class DbApi {
             } else {
                 throw new \Exception("Invalid action [{$action}]");
             }
-
         } catch (\Exception $ex) {
             self::returnErrorJson($ex);
         }
@@ -41,7 +42,8 @@ class DbApi {
         self::returnJson();
     }
 
-    private static function returnErrorJson(\Exception $ex): void {
+    private static function returnErrorJson(\Exception $ex): void
+    {
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode([
             'ok' => false,
@@ -51,7 +53,8 @@ class DbApi {
         exit();
     }
 
-    private static function returnJson(mixed $data = null): void {
+    private static function returnJson(mixed $data = null): void
+    {
         header('Content-Type: application/json; charset=utf-8');
 
         $ret = [

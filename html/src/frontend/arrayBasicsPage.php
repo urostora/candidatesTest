@@ -4,7 +4,7 @@ use CandidateTest\Group01\ArrayBasics;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/../vendor/autoload.php';
 
-echo \CandidateTest\Helpers\HtmlHelper::GetHtmlHeader('Array basics');
+echo \CandidateTest\Helpers\HtmlHelper::getHtmlHeader('Array basics');
 
 // group array
 
@@ -22,7 +22,7 @@ $employees = \CandidateTest\Group01\Types\Employee::getSampleEmployees();
 echo '<h3>Employees</h3><ul>';
 array_walk(
     $employees,
-    function($employee) {
+    function ($employee) {
         echo "<li>{$employee}</li>";
     }
 );
@@ -39,7 +39,7 @@ writeResult(
 
 $result = \CandidateTest\Group01\ArrayBasics::getMaxSalaryPerGroup($employees);
 $resultString = '<ul>';
-foreach($result as $key => $value) {
+foreach ($result as $key => $value) {
     $resultString .= "<li>$key - $value</li>";
 }
 $resultString .= '</ul>';
@@ -53,7 +53,7 @@ writeResult(
 
 $result3 = \CandidateTest\Group01\ArrayBasics::getEmployeesOrderedBySalary($employees);
 $resultString3 = '<ul>';
-foreach($result3 as $key => $value) {
+foreach ($result3 as $key => $value) {
     $resultString3 .= "<li>$key - $value</li>";
 }
 $resultString3 .= '</ul>';
@@ -67,7 +67,7 @@ writeResult(
 
 $result2 = \CandidateTest\Group01\ArrayBasics::getEmployeesOrderedByGroupAndBirthDate($employees);
 $resultString2 = '<ul>';
-foreach($result2 as $key => $value) {
+foreach ($result2 as $key => $value) {
     $resultString2 .= "<li>$key - $value</li>";
 }
 $resultString2 .= '</ul>';
@@ -79,14 +79,15 @@ writeResult(
 );
 
 
-echo \CandidateTest\Helpers\HtmlHelper::GetHtmlFooter();
+echo \CandidateTest\Helpers\HtmlHelper::getHtmlFooter();
 
 // end of execution
 
 /* get group array */
 
-function getGroupArrayResult() {
-    $inputString = $_GET['groupArrayString'] ?? '1, 2, 3, 4, 5, 6'; 
+function getGroupArrayResult()
+{
+    $inputString = $_GET['groupArrayString'] ?? '1, 2, 3, 4, 5, 6';
     $groupSize = (int)($_GET['groupArrayNumber'] ?? 2);
 
     $inputArray = array_map(
@@ -112,7 +113,8 @@ function getGroupArrayResult() {
     return $ret;
 }
 
-function getGroupArrayHelp(): string {
+function getGroupArrayHelp(): string
+{
     return '
     <ul>
         <li>Code location: src/classes/Group01/ArrayBasics.php</li>
@@ -124,7 +126,8 @@ function getGroupArrayHelp(): string {
 
 /* get employee with the greatest salary */
 
-function getGreatestSalaryHelp(): string {
+function getGreatestSalaryHelp(): string
+{
     return '
     <ul>
         <li>Code location: src/classes/Group01/ArrayBasics.php</li>
@@ -136,7 +139,8 @@ function getGreatestSalaryHelp(): string {
 
 /* get the greatest salary per group */
 
-function getMaxSalaryPerGroupHelp(): string {
+function getMaxSalaryPerGroupHelp(): string
+{
     return '
     <ul>
         <li>Code location: src/classes/Group01/ArrayBasics.php</li>
@@ -148,7 +152,8 @@ function getMaxSalaryPerGroupHelp(): string {
 
 /* order employees by salary */
 
-function getEmployeesOrderedBySalaryHelp(): string {
+function getEmployeesOrderedBySalaryHelp(): string
+{
     return '
     <ul>
         <li>Code location: src/classes/Group01/ArrayBasics.php</li>
@@ -160,7 +165,8 @@ function getEmployeesOrderedBySalaryHelp(): string {
 
 /* order employees by group and birthdate */
 
-function getEmployeesOrderedByGroupAndBirthDateHelp(): string {
+function getEmployeesOrderedByGroupAndBirthDateHelp(): string
+{
     return '
     <ul>
         <li>Code location: src/classes/Group01/ArrayBasics.php</li>

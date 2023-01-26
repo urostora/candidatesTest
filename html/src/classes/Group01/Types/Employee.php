@@ -2,7 +2,8 @@
 
 namespace CandidateTest\Group01\Types;
 
-class Employee {
+class Employee
+{
     public string $name;
     public \DateTime $birthday;
     public \DateTime $hiredOn;
@@ -13,11 +14,12 @@ class Employee {
      * Create sample array of employee data
      *
      * @param array{'name': string, 'birthday': string, 'hiredOn': string, 'group': string, 'salary': int} $data
-     * 
+     *
      * @return Employee
-     * 
+     *
      */
-    public static function createFromData(array $data): Employee {
+    public static function createFromData(array $data): Employee
+    {
         $ret = new Employee();
 
         $ret->name = $data['name'];
@@ -32,7 +34,8 @@ class Employee {
     /**
      * @return Employee[]
      */
-    public static function getSampleEmployees(): array {
+    public static function getSampleEmployees(): array
+    {
         $sampleData = [
             ['name' => 'Sam Smith', 'birthday' => '1968-12-18', 'hiredOn' => '2021-05-06', 'group' => 'Accounting', 'salary' => 45000],
             ['name' => 'Amy Adams', 'birthday' => '1974-08-22', 'hiredOn' => '2015-04-01', 'group' => 'CEO', 'salary' => 250000],
