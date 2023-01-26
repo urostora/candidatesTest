@@ -85,7 +85,7 @@ echo \CandidateTest\Helpers\HtmlHelper::GetHtmlFooter();
 
 /* get group array */
 
-function getGroupArrayResult() {
+function getGroupArrayResult(): string {
     $inputString = $_GET['groupArrayString'] ?? '1, 2, 3, 4, 5, 6'; 
     $groupSize = (int)($_GET['groupArrayNumber'] ?? 2);
 
