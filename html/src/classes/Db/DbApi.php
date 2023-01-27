@@ -33,7 +33,8 @@ class DbApi
             if ($action === 'addManufacturer') {
                 static::handleAddManufacturer();
             } else {
-                throw new \Exception("Invalid action [{$action}]");
+                $actionString = is_string($action) ? $action : '';
+                throw new \Exception("Invalid action [{$actionString}]");
             }
         } catch (\Exception $ex) {
             self::returnErrorJson($ex);

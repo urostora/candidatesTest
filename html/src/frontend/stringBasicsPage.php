@@ -143,15 +143,15 @@ function writeStringEnterAndResultCode(
     string $action,
     string $title,
     callable $callback,
-    string $defaultContent,
+    string $defaultContent = '',
     string $helpHtml = '',
-    $showTextarea = false
+    bool $showTextarea = false
 ): void {
-    $inputString = $_GET[$action] ?? $defaultContent ?? '';
+    $inputString = $_GET[$action] ?? $defaultContent;
 
     $input = $showTextarea
-        ? '<textarea style="width: 50vw;" rows="4" name="' . $action . '">' . htmlentities($inputString ?? '') . '</textarea>'
-        : '<input type="text" style="width: 50vw;" name="' . $action . '" value="' . htmlentities($inputString ?? '') . '" />';
+        ? '<textarea style="width: 50vw;" rows="4" name="' . $action . '">' . htmlentities($inputString) . '</textarea>'
+        : '<input type="text" style="width: 50vw;" name="' . $action . '" value="' . htmlentities($inputString) . '" />';
 
     echo '
     <fieldset>

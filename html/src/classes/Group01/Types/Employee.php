@@ -18,14 +18,21 @@ class Employee
      * @return Employee
      *
      */
-    public static function createFromData(array $data): Employee
+    public static function createFromData(array $data): ?Employee
     {
+        $birthday = \DateTime::createFromFormat('Y-m-d', $data['birthday']);
+        $hiredOn = \DateTime::createFromFormat('Y-m-d', $data['hiredOn']);
+
+        if (false === $birthday || false === $hiredOn) {
+            return null;
+        }
+
         $ret = new Employee();
 
-        $ret->name = $data['name'];
-        $ret->birthday = \DateTime::createFromFormat('Y-m-d', $data['birthday']);
-        $ret->hiredOn = \DateTime::createFromFormat('Y-m-d', $data['hiredOn']);
-        $ret->group = $data['group'];
+        $ret->name = (string)$data['name'];
+        $ret->birthday = $birthday;
+        $ret->hiredOn = $hiredOn;
+        $ret->group = (string)$data['group'];
         $ret->salary = (int)$data['salary'];
 
         return $ret;
@@ -48,10 +55,16 @@ class Employee
             ['name' => 'Alex White', 'birthday' => '1983-01-09', 'hiredOn' => '2018-12-01', 'group' => 'Sales', 'salary' => 37000],
         ];
 
-        return array_map(
-            fn($data) => Employee::createFromData($data),
-            $sampleData,
-        );
+        $ret = [];
+
+        foreach($sampleData as $employeeRow) {
+            $employee = Employee::createFromData($employeeRow);
+            if (!is_null($employee)) {
+                $ret[] = $employee;
+            }
+        }
+
+        return $ret;
     }
 
     public function __toString()
