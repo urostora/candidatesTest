@@ -28,14 +28,19 @@ writeStringEnterAndResultCode(
     'getIssueNumbers',
     'Get issue numbers (like ASDF-123456) from string',
     'getGetIssueNumbersResult',
-    'Minions ipsum UKSR-98765489 underweaaar potatoooo hahaha SDgD-985413748 hahaha baboiii ABCD-123456 chasy. Jeje me want bananaaa! Ti aamoo! Bee (ERUE-951234) do bee do bee do. Ti aamoo! poulet tikka masala potatoooo bee do bee do bee do. Butt poopayee bananaaaa chasy baboiii po kass pepete poopayee wiiiii belloo!, QWER-987654',
+    'Minions ipsum UKSR-98765489 underweaaar potatoooo hahaha SDgD-985413748
+    hahaha baboiii ABCD-123456 chasy. Jeje me want bananaaa! Ti aamoo! Bee
+    (ERUE-951234) do bee do bee do. Ti aamoo! poulet tikka masala potatoooo
+    bee do bee do bee do. Butt poopayee bananaaaa chasy baboiii po kass
+    pepete poopayee wiiiii belloo!, QWER-987654',
     getGetIssueNumbersHelp(),
     true
 );
 
 writeStringEnterAndResultCode(
     'capitalizeEachWord',
-    'Capitalize each word that begins with letter (very fairy tales => Very Fairy Tales)',
+    'Capitalize each word that begins with letter
+    (very fairy tales => Very Fairy Tales)',
     'capitalizeEachWordResult',
     'hello Mike, have a great Holiday',
     getCapitalizeEachWordHelp(),
@@ -52,8 +57,11 @@ echo \CandidateTest\Helpers\HtmlHelper::getHtmlFooter();
 
 function getCheckLettersResult(string $inputString = ''): string
 {
-    $output = \CandidateTest\Group01\StringBasics::checkIfContainsLowercaseUppercaseNumber($inputString);
-    return "<p>String [{$inputString}] contains " . ($output ? '' : 'NOT ') . 'all of uppercase, lowercase and number letters</p>';
+    $output = \CandidateTest\Group01\StringBasics
+        ::checkIfContainsLowercaseUppercaseNumber($inputString);
+    return "<p>String [{$inputString}] contains "
+    . ($output ? '' : 'NOT ')
+    . 'all of uppercase, lowercase and number letters</p>';
 }
 
 function getCheckLettersHelp(string $inputString = ''): string
@@ -62,7 +70,9 @@ function getCheckLettersHelp(string $inputString = ''): string
     <ul>
         <li>Code location: src/classes/Group01/StringBasics.php</li>
         <li>Method: StringBasics::CheckIfContainsLowercaseUppercaseNumber</li>
-        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testCheckIfContainsLowercaseUppercaseNumber</code></li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit
+        /html/tests --filter testCheckIfContainsLowercaseUppercaseNumber</code>
+        </li>
     </ul>
     ';
 }
@@ -85,7 +95,8 @@ function getConvertToHttpsHelp(string $inputString = ''): string
     <ul>
         <li>Code location: src/classes/Group01/StringBasics.php</li>
         <li>Method: StringBasics::ConvertUrlToHttps</li>
-        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testConvertUrlToHttps</code></li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit
+        /html/tests --filter testConvertUrlToHttps</code></li>
     </ul>
     ';
 }
@@ -95,7 +106,8 @@ function getConvertToHttpsHelp(string $inputString = ''): string
 
 function getGetIssueNumbersResult(string $inputString = ''): string
 {
-    $output = \CandidateTest\Group01\StringBasics::getIssueNumbers($inputString);
+    $output = \CandidateTest\Group01\StringBasics
+        ::getIssueNumbers($inputString);
 
     $safeString = htmlentities($inputString);
     $safeOutput = sprintf('<pre>%s</pre>', print_r($output, true));
@@ -109,7 +121,8 @@ function getGetIssueNumbersHelp(string $inputString = ''): string
     <ul>
         <li>Code location: src/classes/Group01/StringBasics.php</li>
         <li>Method: StringBasics::GetIssueNumbers</li>
-        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testGetIssueNumbers</code></li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit
+        /html/tests --filter testGetIssueNumbers</code></li>
     </ul>
     ';
 }
@@ -118,7 +131,8 @@ function getGetIssueNumbersHelp(string $inputString = ''): string
 
 function capitalizeEachWordResult(string $inputString = ''): string
 {
-    $output = \CandidateTest\Group01\StringBasics::capitalizeEachWord($inputString);
+    $output = \CandidateTest\Group01\StringBasics
+        ::capitalizeEachWord($inputString);
 
     $safeString = htmlentities($inputString);
     $safeOutput = htmlentities($output);
@@ -132,7 +146,8 @@ function getCapitalizeEachWordHelp(string $inputString = ''): string
     <ul>
         <li>Code location: src/classes/Group01/StringBasics.php</li>
         <li>Method: StringBasics::CapitalizeEachWord</li>
-        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testCapitalizeEachWord</code></li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit
+        /html/tests --filter testCapitalizeEachWord</code></li>
     </ul>
     ';
 }
@@ -150,8 +165,10 @@ function writeStringEnterAndResultCode(
     $inputString = $_GET[$action] ?? $defaultContent;
 
     $input = $showTextarea
-        ? '<textarea style="width: 50vw;" rows="4" name="' . $action . '">' . htmlentities($inputString) . '</textarea>'
-        : '<input type="text" style="width: 50vw;" name="' . $action . '" value="' . htmlentities($inputString) . '" />';
+        ? '<textarea style="width: 50vw;" rows="4" name="' . $action . '">'
+            . htmlentities($inputString) . '</textarea>'
+        : '<input type="text" style="width: 50vw;" name="' . $action
+            . '" value="' . htmlentities($inputString) . '" />';
 
     echo '
     <fieldset>

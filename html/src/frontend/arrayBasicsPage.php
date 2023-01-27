@@ -51,7 +51,8 @@ writeResult(
 );
 
 
-$result3 = \CandidateTest\Group01\ArrayBasics::getEmployeesOrderedBySalary($employees);
+$result3 = \CandidateTest\Group01\ArrayBasics
+    ::getEmployeesOrderedBySalary($employees);
 $resultString3 = '<ul>';
 foreach ($result3 as $key => $value) {
     $resultString3 .= "<li>$key - $value</li>";
@@ -65,7 +66,8 @@ writeResult(
 );
 
 
-$result2 = \CandidateTest\Group01\ArrayBasics::getEmployeesOrderedByGroupAndBirthDate($employees);
+$result2 = \CandidateTest\Group01\ArrayBasics
+    ::getEmployeesOrderedByGroupAndBirthDate($employees);
 $resultString2 = '<ul>';
 foreach ($result2 as $key => $value) {
     $resultString2 .= "<li>$key - $value</li>";
@@ -99,9 +101,18 @@ function getGroupArrayResult(): string
 
     $ret = '<p>
         <form>
-            <input type="textbox" name="groupArrayString" style="width: 50vw;" value="' . htmlentities($inputString) . '" />
+            <input
+                type="textbox"
+                name="groupArrayString"
+                style="width: 50vw;"
+                value="' . htmlentities($inputString) . '"
+            />
             <br />
-            <input type="number" name="groupArrayNumber" value="' . (int)$groupSize . '" />
+            <input
+                type="number"
+                name="groupArrayNumber"
+                value="' . (int)$groupSize . '"
+            />
             <br />
             <input type="submit" value="Küldés" />
         </form>
@@ -119,7 +130,8 @@ function getGroupArrayHelp(): string
     <ul>
         <li>Code location: src/classes/Group01/ArrayBasics.php</li>
         <li>Method: ArrayBasics::getGroupedArray</li>
-        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testGetGroupedArray</code></li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit
+        /html/tests --filter testGetGroupedArray</code></li>
     </ul>
     ';
 }
@@ -132,7 +144,8 @@ function getGreatestSalaryHelp(): string
     <ul>
         <li>Code location: src/classes/Group01/ArrayBasics.php</li>
         <li>Method: ArrayBasics::getMaxSalaryEmployee</li>
-        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testGetMaxSalaryEmployee</code></li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit
+        /html/tests --filter testGetMaxSalaryEmployee</code></li>
     </ul>
     ';
 }
@@ -145,7 +158,8 @@ function getMaxSalaryPerGroupHelp(): string
     <ul>
         <li>Code location: src/classes/Group01/ArrayBasics.php</li>
         <li>Method: ArrayBasics::getMaxSalaryPerGroup</li>
-        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testGetMaxSalaryPerGroup</code></li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit
+        /html/tests --filter testGetMaxSalaryPerGroup</code></li>
     </ul>
     ';
 }
@@ -158,7 +172,8 @@ function getEmployeesOrderedBySalaryHelp(): string
     <ul>
         <li>Code location: src/classes/Group01/ArrayBasics.php</li>
         <li>Method: ArrayBasics::getEmployeesOrderedBySalary</li>
-        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testGetEmployeesOrderedBySalary</code></li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit
+        /html/tests --filter testGetEmployeesOrderedBySalary</code></li>
     </ul>
     ';
 }
@@ -171,7 +186,9 @@ function getEmployeesOrderedByGroupAndBirthDateHelp(): string
     <ul>
         <li>Code location: src/classes/Group01/ArrayBasics.php</li>
         <li>Method: ArrayBasics::getEmployeesOrderedByGroupAndBirthDate</li>
-        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit /html/tests --filter testGetEmployeesOrderedByGroupAndBirthDate</code></li>
+        <li>Run unit test: <code>docker exec -it ct_php /html/vendor/bin/phpunit
+        /html/tests --filter testGetEmployeesOrderedByGroupAndBirthDate</code>
+        </li>
     </ul>
     ';
 }

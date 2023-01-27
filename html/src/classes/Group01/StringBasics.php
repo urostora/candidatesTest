@@ -20,7 +20,8 @@ class StringBasics
 
     /**
      * Convert url to https scheme
-     * @param string $inputString Input string can be a url in format abc.de, //abc.de, http://abc.de, https://abc.de
+     * @param string $inputString Input string can be a url in formats:
+     * abc.de, //abc.de, http://abc.de, https://abc.de
      * @return string url in https scheme: https://abc.de
      */
     public static function convertUrlToHttps(string $inputString): string
@@ -31,8 +32,10 @@ class StringBasics
     }
 
     /**
-     * Return all issue numbers found in a text. Issue numbers must not be separated from the other text parts (with space or others)
-     * Issue numbers contain 4 uppercase characters, a minus sign and 6 numbers. When more numbers are there, return the first 6 numbers
+     * Return all issue numbers found in a text. Issue numbers must not be
+     * separated from the other text parts (with space or others)
+     * Issue numbers contain 4 uppercase characters, a minus sign and 6 numbers.
+     * When more numbers are there, return the first 6 numbers
      * Examples: ABCD-123456, QWER-987654
      * @param string $inputString
      * @return array<string> Array of issue numbers found in input string
