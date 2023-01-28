@@ -13,7 +13,7 @@ final class StringBasicsTest extends TestCase
      * @dataProvider providerTestCheckIfContainsLowercaseUppercaseNumber
      */
     public function testCheckIfContainsLowercaseUppercaseNumber(string $input, bool $expected): void {
-        $value = StringBasics::CheckIfContainsLowercaseUppercaseNumber($input);
+        $value = StringBasics::checkIfContainsLowercaseUppercaseNumber($input);
 
         $this->assertSame($expected, $value);
     }
@@ -36,7 +36,7 @@ final class StringBasicsTest extends TestCase
      * @dataProvider providerTestConvertUrlToHttps
      */
     public function testConvertUrlToHttps(string $input, string $expected): void {
-        $value = StringBasics::ConvertUrlToHttps($input);
+        $value = StringBasics::convertUrlToHttps($input);
 
         $this->assertSame($expected, $value);
     }
@@ -54,7 +54,7 @@ final class StringBasicsTest extends TestCase
      * @dataProvider providerTestGetIssueNumbers
      */
     public function testGetIssueNumbers(string $input, array $expected): void {
-        $value = StringBasics::GetIssueNumbers($input);
+        $value = StringBasics::cetIssueNumbers($input);
 
         $this->assertSame($expected, $value);
     }
@@ -79,7 +79,7 @@ final class StringBasicsTest extends TestCase
      * @dataProvider providerTestCapitalizeEachWord
      */
     public function testCapitalizeEachWord(string $input, string $expected): void {
-        $value = StringBasics::CapitalizeEachWord($input);
+        $value = StringBasics::capitalizeEachWord($input);
 
         $this->assertSame($expected, $value);
     }
