@@ -54,7 +54,7 @@ final class StringBasicsTest extends TestCase
      * @dataProvider providerTestGetIssueNumbers
      */
     public function testGetIssueNumbers(string $input, array $expected): void {
-        $value = StringBasics::cetIssueNumbers($input);
+        $value = StringBasics::getIssueNumbers($input);
 
         $this->assertSame($expected, $value);
     }
