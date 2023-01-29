@@ -4,7 +4,7 @@ use CandidateTest\Helpers\HtmlHelper;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/../vendor/autoload.php';
 
-echo HtmlHelper::GetHtmlHeader('Basic database operations');
+echo HtmlHelper::getHtmlHeader('Basic database operations');
 
 ?>
 
@@ -116,4 +116,4 @@ echo HtmlHelper::GetHtmlHeader('Basic database operations');
 
 <?php
 
-echo HtmlHelper::GetHtmlFooter();
+echo HtmlHelper::getHtmlFooter();

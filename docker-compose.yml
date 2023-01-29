@@ -16,17 +16,15 @@ services:
     depends_on:
       - php
 
-  composer:
-      image: composer/composer
-      container_name: ct_composer
-      networks:
-        - candidatestest_network
-      ports:
-        - "9001:9000"
-      volumes:
-        - "./html:/composer"
-      working_dir: /composer
-      command: composer install
+  phpcomposer:
+    build:
+      context: ./docker/phpComposer
+      dockerfile: Dockerfile
+    container_name: ct_php_composer
+    volumes:
+      - ./html:/html
+    #command: bash -c "composer install; while true; do sleep 1; done;"
+    command: bash -c "composer install;"
   
   php:
     build:
@@ -44,7 +42,7 @@ services:
     volumes:
       - ./html:/html
     depends_on:
-      - composer
+      - phpcomposer
 
   db_server:
     image: mariadb:10

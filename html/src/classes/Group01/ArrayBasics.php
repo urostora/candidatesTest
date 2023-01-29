@@ -4,7 +4,8 @@ namespace CandidateTest\Group01;
 
 use \CandidateTest\Group01\Types\Employee;
 
-class ArrayBasics {
+class ArrayBasics
+{
 
     /**
      * Divide the array into many sub-arrays,
@@ -13,8 +14,16 @@ class ArrayBasics {
      * @example ArrayBasics::getGroupedArray([1, 2, 3, 4, 5], 2) -> [[ 1, 2], [3, 4], [5]]
      * @example ArrayBasics::getGroupedArray([1, 2, 3, 4, 5], 3) -> [[ 1, 2, 3], [4, 5]]
      * @example ArrayBasics::getGroupedArray([1, 2, 3, 4, 5], 6) -> [[ 1, 2, 3, 4, 5]]
+     *
+     * @param array<string> $inputArray
+     * @param int $groupSize
+     *
+     * @return array<int, array<int, string>>
      */
-    public static function getGroupedArray(array $inputArray, int $groupSize) {
+    public static function getGroupedArray(
+        array $inputArray,
+        int $groupSize) : array
+    {
         $ret = [];
         $currentGroup = [];
 
@@ -32,19 +41,18 @@ class ArrayBasics {
         }
 
         return $ret;
-
-        return [['1', '2'], ['3', '4'], ['5', '6']];
     }
 
     /**
      * Return employee with the highest salary (return first when equal)
      *
      * @param Employee[] $employees
-     * 
+     *
      * @return Employee|null
-     * 
+     *
      */
-    public static function getMaxSalaryEmployee(array $employees): ?Employee {
+    public static function getMaxSalaryEmployee(array $employees): ?Employee
+    {
         return array_reduce(
             $employees,
             function(?Employee $carry, Employee $value) {
@@ -56,13 +64,11 @@ class ArrayBasics {
             },
             null
         );
-
-        // return $employees[0] ?? null;
     }
 
     /**
      * Return the greatest salary per group
-     * 
+     *
      * return array example:
      * [
      *      'group1' => 100,
@@ -71,16 +77,19 @@ class ArrayBasics {
      * ];
      *
      * @param Employee[] $employees
-     * 
+     *
      * @return array<string, int>
-     * 
+     *
      */
-    public static function getMaxSalaryPerGroup(array $employees): array {
+    public static function getMaxSalaryPerGroup(array $employees): array
+    {
         return array_reduce(
             $employees,
-
             function(array $carry, Employee $value) {
-                if (!isset($carry[$value->group]) || $carry[$value->group] < $value->salary) {
+                if (
+                    !isset($carry[$value->group])
+                    || $carry[$value->group] < $value->salary
+                ) {
                     $carry[$value->group] = $value->salary;
                 }
 
@@ -88,23 +97,18 @@ class ArrayBasics {
             },
             []
         );
-
-        return [
-            'group1' => 100,
-            'group2' => 200,
-            'group3' => 300,
-        ];
     }
 
     /**
      * Return the greates salary per group
      *
      * @param Employee[] $employees
-     * 
+     *
      * @return Employee[]
-     * 
+     *
      */
-    public static function getEmployeesOrderedBySalary(array $employees): array {
+    public static function getEmployeesOrderedBySalary(array $employees): array
+    {
         usort(
             $employees,
             function (Employee $e1, Employee $e2) {
@@ -119,11 +123,12 @@ class ArrayBasics {
      * Return the greates salary per group
      *
      * @param Employee[] $employees
-     * 
+     *
      * @return Employee[]
-     * 
+     *
      */
-    public static function getEmployeesOrderedByGroupAndBirthDate(array $employees): array {
+    public static function getEmployeesOrderedByGroupAndBirthDate(array $employees): array
+    {
         usort(
             $employees,
             function (Employee $e1, Employee $e2) {
