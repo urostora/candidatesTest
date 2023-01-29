@@ -25,7 +25,7 @@ class DbBasics
             $results = $stmt->fetchAll(\PDO::FETCH_CLASS);
 
             echo '<select>';
-            foreach($results as $res) {
+            foreach ($results as $res) {
                 $safeName = htmlentities($res->name);
                 echo "<option value=\"{$res->id}\">{$safeName}</option>";
             }

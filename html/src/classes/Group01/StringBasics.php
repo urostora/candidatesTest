@@ -14,8 +14,8 @@ class StringBasics
      * @return bool
      */
     public static function checkIfContainsLowercaseUppercaseNumber(
-        string $inputString): bool
-    {
+        string $inputString
+    ): bool {
         $pattern = '/[A-Z]/';
         if (!preg_match($pattern, $inputString)) {
             return false;
@@ -44,7 +44,7 @@ class StringBasics
     {
         $pattern = '/^((http[s]?:)?\/\/)?/';
         $ret = preg_replace($pattern, 'https://', $inputString);
-        return $ret;
+        return $ret ?? $inputString;
     }
 
     /**

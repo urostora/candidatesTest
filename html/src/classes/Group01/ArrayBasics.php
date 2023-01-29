@@ -22,12 +22,12 @@ class ArrayBasics
      */
     public static function getGroupedArray(
         array $inputArray,
-        int $groupSize) : array
-    {
+        int $groupSize
+    ) : array {
         $ret = [];
         $currentGroup = [];
 
-        foreach($inputArray as $value) {
+        foreach ($inputArray as $value) {
             $currentGroup[] = $value;
 
             if (count($currentGroup) >= $groupSize) {
@@ -55,7 +55,7 @@ class ArrayBasics
     {
         return array_reduce(
             $employees,
-            function(?Employee $carry, Employee $value) {
+            function (?Employee $carry, Employee $value) {
                 if (is_null($carry) || $carry->salary < $value->salary) {
                     $carry = $value;
                 }
@@ -85,9 +85,8 @@ class ArrayBasics
     {
         return array_reduce(
             $employees,
-            function(array $carry, Employee $value) {
-                if (
-                    !isset($carry[$value->group])
+            function (array $carry, Employee $value) {
+                if (!isset($carry[$value->group])
                     || $carry[$value->group] < $value->salary
                 ) {
                     $carry[$value->group] = $value->salary;
